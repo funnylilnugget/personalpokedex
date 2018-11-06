@@ -4,6 +4,11 @@ background-size: cover;
 background-repeat: no-repeat;
 }
 
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
 .mainpagephoto {
   filter: url(filters.svg#grayscale);
   filter: gray;
@@ -14,3 +19,16 @@ background-repeat: no-repeat;
   filter: none;
   -webkit-filter: none;
 }
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 200px 200px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  border: solid black;
+  grid-area: "pic bio"
+              "pic stats";
+}
+
+.pokemon-grid div:nth-child(1)
