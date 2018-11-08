@@ -32,10 +32,10 @@ p {
   display: inline;
 }
 
-/* .test {
-  border: black solid 2px;
-  background: #58597F;
-} */
+.test {
+  background: rgba(209, 203, 203, 0.5) ;
+  border-radius: 25px;
+}
 
 .slideRight{
 	animation-name: slideRight;
@@ -92,7 +92,7 @@ p {
 	}
 }
 
-.pullDown{
+.pullDown {
 	animation-name: pullDown;
 	-webkit-animation-name: pullDown;
 

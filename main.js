@@ -1,69 +1,43 @@
-// const POKEMON = [];
-
-// var pokemon1 = "latios";
-// var pokemon2 = "blaziken";
-// var pokemon3 = "gardevoir";
+var pokemon1 = "latios";
+var pokemon2 = "blaziken";
+var pokemon3 = "gardevoir";
 
 class NuggetsPokemon {
-  constructor(name, hp, attack, defense, abilities) {
+  constructor(name, hp, attack, defense, abilities, abilities2) {
     this.name = name;
     this.hp = hp;
     this.attack = attack;
     this.defense = defense;
-    this.abilities = abilities;
+    this.abilities = abilities
+    this.abilities2 = abilities2;
   }
 }
 
-
-
-function getPokemon1(pokemonName) {
+function getPokemon(pokemonName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
-
+      // console.log(data);
    let poke = new NuggetsPokemon(
         data.name,
-        data.stats[5]
+        data.stats[5]["base_stat"],
+        data.stats[4],
+        data.stats[3],
+        data.abilities[0]["ability"]["name"],
+        data.abilities[1]["ability"]["name"]
       );
-      console.log(poke);
+      if (poke.abilities2 == undefined) {
+        return console.log('nope');
+      }
+    let node = document.createElement('p');
+      node.innerHTML = "HP: " + data.stats[5]["base_stat"] + "<br>" +
+                        "Attack: " + data.stats[4]["base_stat"] + "<br>" +
+                        "Defense: " + data.stats[3]["base_stat"] + "<br>" +
+                        "Ability: " +  data.abilities[0]["ability"]["name"] + ", " +  data.abilities[1]["ability"]["name"];
+      document.getElementById('data').appendChild(node);
     }
   };
-  xhttp.open("GET", "http://fizal.me/pokeapi/api/v2/name/latios.json", true);
+  xhttp.open("GET", "http://fizal.me/pokeapi/api/v2/name/" + pokemonName + ".json", true);
   xhttp.send();
 }
-
-function getPokemon2(pokemonName) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-      data = JSON.parse(this.responseText);
-
-   let poke = new NuggetsPokemon(
-        data.name,
-        data.stats[5]
-      );
-      console.log(poke);
-    }
-  };
-  xhttp.open("GET", "http://fizal.me/pokeapi/api/v2/name/blaziken.json", true);
-  xhttp.send();
-}
-
-function getPokemon3(pokemonName) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-      data = JSON.parse(this.responseText);
-
-   let poke = new NuggetsPokemon(
-        data.name,
-        data.stats[5]
-      );
-      console.log(poke);
-    }
-  };
-  xhttp.open("GET", "http://fizal.me/pokeapi/api/v2/name/gardevoir.json", true);
-  xhttp.send();
-}
-// var pokemonSelection = new NuggetsPokemon(pokemon1, pokemon2, pokemon3)
