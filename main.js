@@ -1,4 +1,4 @@
-var pokemon1 = "latios";
+var pokemon1 = "mimikyu-disguised";
 var pokemon2 = "blaziken";
 var pokemon3 = "gardevoir";
 
@@ -8,7 +8,7 @@ class NuggetsPokemon {
     this.hp = hp;
     this.attack = attack;
     this.defense = defense;
-    this.abilities = abilities
+    this.abilities = abilities;
     this.abilities2 = abilities2;
   }
 }
@@ -27,9 +27,6 @@ function getPokemon(pokemonName) {
         data.abilities[0]["ability"]["name"],
         data.abilities[1]["ability"]["name"]
       );
-      if (poke.abilities2 == undefined) {
-        return console.log('nope');
-      }
     let node = document.createElement('p');
       node.innerHTML = "HP: " + data.stats[5]["base_stat"] + "<br>" +
                         "Attack: " + data.stats[4]["base_stat"] + "<br>" +
