@@ -1,4 +1,4 @@
-var pokemon1 = "mimikyu-disguised";
+var pokemon1 = "araquanid";
 var pokemon2 = "blaziken";
 var pokemon3 = "gardevoir";
 
