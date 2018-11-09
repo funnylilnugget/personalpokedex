@@ -18,7 +18,6 @@ function getPokemon(pokemonName) {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
-      // console.log(data);
    let poke = new NuggetsPokemon(
         data.name,
         data.stats[5]["base_stat"],
@@ -33,6 +32,9 @@ function getPokemon(pokemonName) {
                         "Defense: " + data.stats[3]["base_stat"] + "<br>" +
                         "Ability: " +  data.abilities[0]["ability"]["name"] + ", " +  data.abilities[1]["ability"]["name"];
       document.getElementById('data').appendChild(node);
+    let pageTitle = document.createElement('h2');
+      pageTitle.innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+      document.getElementById('pokemon-name').appendChild(pageTitle);
     }
   };
   xhttp.open("GET", "http://fizal.me/pokeapi/api/v2/name/" + pokemonName + ".json", true);

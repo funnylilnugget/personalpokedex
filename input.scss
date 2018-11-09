@@ -1,3 +1,7 @@
+$header-color: #ffffff;
+$header-shadow: 1px 1px 2px black;
+
+
 body {
   background: url('https://wallpapertag.com/wallpaper/full/7/1/e/141013-pokeball-background-1920x1080-mobile.jpg') ;
   background-size: cover;
@@ -5,8 +9,14 @@ body {
 }
 
 h1 {
-  color: white;
-  text-shadow: 1px 1px 2px black;
+  color: $header-color;
+  text-shadow: $header-shadow;
+
+}
+
+h2 {
+  color: $header-color;
+  text-shadow: $header-shadow;
 }
 
 p {
