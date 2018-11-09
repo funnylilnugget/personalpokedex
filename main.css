@@ -1,196 +1,132 @@
 body {
-  background: url('https://wallpapertag.com/wallpaper/full/7/1/e/141013-pokeball-background-1920x1080-mobile.jpg') ;
-background-size: cover;
-background-repeat: no-repeat;
-}
+  background: url("https://wallpapertag.com/wallpaper/full/7/1/e/141013-pokeball-background-1920x1080-mobile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 h1 {
   color: white;
-  text-shadow: 1px 1px 2px black;
-}
+  text-shadow: 1px 1px 2px black; }
 
 p {
-  font-size: 25px;
-}
-.card-action {
-  font-size: 16px;
-}
+  font-size: 25px; }
 
 .mainpagephoto {
   filter: url(filters.svg#grayscale);
   filter: gray;
-  -webkit-filter: grayscale(1);
+  -webkit-filter: grayscale(1); }
 
-}
 .mainpagephoto:hover {
   filter: none;
-  -webkit-filter: none;
-}
+  -webkit-filter: none; }
 
-.pokeimage img{
+.pokeimage img {
   width: 75px;
-  display: inline;
-}
+  display: inline; }
 
 .rotate-image {
-  transform: rotateZ(90deg);
-}
+  transform: rotateZ(90deg); }
 
 .test {
-  background: rgba(209, 203, 203, 0.5) ;
-  border-radius: 25px;
-}
+  background: rgba(209, 203, 203, 0.5);
+  border-radius: 25px; }
 
-.slideRight{
-	animation-name: slideRight;
-	-webkit-animation-name: slideRight;
-
-	animation-duration: 2s;
-	-webkit-animation-duration: 2s;
-
-	animation-timing-function: ease-in-out;
-	-webkit-animation-timing-function: ease-in-out;
-
-	visibility: visible !important;
-}
+.slideRight {
+  animation-name: slideRight;
+  -webkit-animation-name: slideRight;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  visibility: visible !important; }
 
 @keyframes slideRight {
-	0% {
-		transform: translateX(-150%);
-	}
-	50%{
-		transform: translateX(8%);
-	}
-	65%{
-		transform: translateX(-4%);
-	}
-	80%{
-		transform: translateX(4%);
-	}
-	95%{
-		transform: translateX(-2%);
-	}
-	100% {
-		transform: translateX(0%);
-	}
-}
-
+  0% {
+    transform: translateX(-150%); }
+  50% {
+    transform: translateX(8%); }
+  65% {
+    transform: translateX(-4%); }
+  80% {
+    transform: translateX(4%); }
+  95% {
+    transform: translateX(-2%); }
+  100% {
+    transform: translateX(0%); } }
 @-webkit-keyframes slideRight {
-	0% {
-		-webkit-transform: translateX(-150%);
-	}
-	50%{
-		-webkit-transform: translateX(8%);
-	}
-	65%{
-		-webkit-transform: translateX(-4%);
-	}
-	80%{
-		-webkit-transform: translateX(4%);
-	}
-	95%{
-		-webkit-transform: translateX(-2%);
-	}
-	100% {
-		-webkit-transform: translateX(0%);
-	}
-}
-
+  0% {
+    -webkit-transform: translateX(-150%); }
+  50% {
+    -webkit-transform: translateX(8%); }
+  65% {
+    -webkit-transform: translateX(-4%); }
+  80% {
+    -webkit-transform: translateX(4%); }
+  95% {
+    -webkit-transform: translateX(-2%); }
+  100% {
+    -webkit-transform: translateX(0%); } }
 .pullDown {
-	animation-name: pullDown;
-	-webkit-animation-name: pullDown;
-
-	animation-duration: 2s;
-	-webkit-animation-duration: 2s;
-
-	animation-timing-function: ease-out;
-	-webkit-animation-timing-function: ease-out;
-
-	transform-origin: 50% 0%;
-	-ms-transform-origin: 50% 0%;
-	-webkit-transform-origin: 50% 0%;
-}
+  animation-name: pullDown;
+  -webkit-animation-name: pullDown;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%; }
 
 @keyframes pullDown {
-	0% {
-		transform: scaleY(0.1);
-	}
-	40% {
-		transform: scaleY(1.02);
-	}
-	60% {
-		transform: scaleY(0.98);
-	}
-	80% {
-		transform: scaleY(1.01);
-	}
-	100% {
-		transform: scaleY(0.98);
-	}
-	80% {
-		transform: scaleY(1.01);
-	}
-	100% {
-		transform: scaleY(1);
-	}
-}
-
+  0% {
+    transform: scaleY(0.1); }
+  40% {
+    transform: scaleY(1.02); }
+  60% {
+    transform: scaleY(0.98); }
+  80% {
+    transform: scaleY(1.01); }
+  100% {
+    transform: scaleY(0.98); }
+  80% {
+    transform: scaleY(1.01); }
+  100% {
+    transform: scaleY(1); } }
 @-webkit-keyframes pullDown {
-	0% {
-		-webkit-transform: scaleY(0.1);
-	}
-	40% {
-		-webkit-transform: scaleY(1.02);
-	}
-	60% {
-		-webkit-transform: scaleY(0.98);
-	}
-	80% {
-		-webkit-transform: scaleY(1.01);
-	}
-	100% {
-		-webkit-transform: scaleY(0.98);
-	}
-	80% {
-		-webkit-transform: scaleY(1.01);
-	}
-	100% {
-		-webkit-transform: scaleY(1);
-	}
-}
-
-
-.tossing{
-	animation-name: tossing;
-	-webkit-animation-name: tossing;
-
-	animation-duration: 2.5s;
-	-webkit-animation-duration: 2.5s;
-
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
-}
+  0% {
+    -webkit-transform: scaleY(0.1); }
+  40% {
+    -webkit-transform: scaleY(1.02); }
+  60% {
+    -webkit-transform: scaleY(0.98); }
+  80% {
+    -webkit-transform: scaleY(1.01); }
+  100% {
+    -webkit-transform: scaleY(0.98); }
+  80% {
+    -webkit-transform: scaleY(1.01); }
+  100% {
+    -webkit-transform: scaleY(1); } }
+.tossing {
+  animation-name: tossing;
+  -webkit-animation-name: tossing;
+  animation-duration: 2.5s;
+  -webkit-animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite; }
 
 @keyframes tossing {
-	0% {
-		transform: rotate(-4deg);
-	}
-	50% {
-		transform: rotate(4deg);
-	}
-	100% {
-		transform: rotate(-4deg);
-	}
-}
-
+  0% {
+    transform: rotate(-4deg); }
+  50% {
+    transform: rotate(4deg); }
+  100% {
+    transform: rotate(-4deg); } }
 @-webkit-keyframes tossing {
-	0% {
-		-webkit-transform: rotate(-4deg);
-	}
-	50% {
-		-webkit-transform: rotate(4deg);
-	}
-	100% {
-		-webkit-transform: rotate(-4deg);
-	}
-}
+  0% {
+    -webkit-transform: rotate(-4deg); }
+  50% {
+    -webkit-transform: rotate(4deg); }
+  100% {
+    -webkit-transform: rotate(-4deg); } }
+
+/*# sourceMappingURL=main.css.map */
