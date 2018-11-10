@@ -27,10 +27,7 @@ p {
   width: 75px;
   display: inline; }
 
-.rotate-image {
-  transform: rotateZ(90deg); }
-
-.test {
+.textbox {
   background: rgba(209, 203, 203, 0.5);
   border-radius: 25px; }
 

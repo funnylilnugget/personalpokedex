@@ -17,23 +17,23 @@ function getPokemon(pokemonName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-      data = JSON.parse(this.responseText);
+      pokeinfo = JSON.parse(this.responseText);
    let poke = new NuggetsPokemon(
-        data.name,
-        data.stats[5]["base_stat"],
-        data.stats[4],
-        data.stats[3],
-        data.abilities[0]["ability"]["name"],
-        data.abilities[1]["ability"]["name"]
+        pokeinfo.name,
+        pokeinfo.stats[5]["base_stat"],
+        pokeinfo.stats[4],
+        pokeinfo.stats[3],
+        pokeinfo.abilities[0]["ability"]["name"],
+        pokeinfo.abilities[1]["ability"]["name"]
       );
     let node = document.createElement('p');
-      node.innerHTML = "HP: " + data.stats[5]["base_stat"] + "<br>" +
-                        "Attack: " + data.stats[4]["base_stat"] + "<br>" +
-                        "Defense: " + data.stats[3]["base_stat"] + "<br>" +
-                        "Ability: " +  data.abilities[0]["ability"]["name"] + ", " +  data.abilities[1]["ability"]["name"];
-      document.getElementById('data').appendChild(node);
+      node.innerHTML = "HP: " + pokeinfo.stats[5]["base_stat"] + "<br>" +
+                        "Attack: " + pokeinfo.stats[4]["base_stat"] + "<br>" +
+                        "Defense: " + pokeinfo.stats[3]["base_stat"] + "<br>" +
+                        "Ability: " +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + ", " +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
+      document.getElementById('pokeinfo').appendChild(node);
     let pageTitle = document.createElement('h2');
-      pageTitle.innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+      pageTitle.innerHTML = pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
       document.getElementById('pokemon-name').appendChild(pageTitle);
     }
   };
