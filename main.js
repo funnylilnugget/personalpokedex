@@ -1,4 +1,4 @@
-var pokemon1 = "pichu";
+var pokemon1 = "togedemaru";
 var pokemon2 = "blaziken";
 var pokemon3 = "gardevoir";
 
@@ -27,10 +27,10 @@ function getPokemon(pokemonName) {
         pokeinfo.abilities[1]["ability"]["name"]
       );
     let node = document.createElement('p');
-      node.innerHTML = "HP: " + pokeinfo.stats[5]["base_stat"] + "<br>" +
-                        "Attack: " + pokeinfo.stats[4]["base_stat"] + "<br>" +
-                        "Defense: " + pokeinfo.stats[3]["base_stat"] + "<br>" +
-                        "Ability: " +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + ", " +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
+      node.innerHTML = "<b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
+                        "<b>Attack:</b> " + pokeinfo.stats[4]["base_stat"] + "<br>" +
+                        "<b>Defense:</b> " + pokeinfo.stats[3]["base_stat"] + "<br>" +
+                        "<b>Ability:</b> " +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + ", " +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
       document.getElementById('pokeinfo').appendChild(node);
     let pageTitle = document.createElement('h2');
       pageTitle.innerHTML = pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
