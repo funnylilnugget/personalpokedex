@@ -1,16 +1,18 @@
-var pokemon1 = "togedemaru";
-var pokemon2 = "blaziken";
-var pokemon3 = "gardevoir";
+var pokemon1 = "777";
+var pokemon2 = "257";
+var pokemon3 = "282";
 
 class NuggetsPokemon {
-  constructor(name, hp, attack, defense, abilities, abilities2, id) {
+  constructor(name, hp, attack, defense, abilities, abilities2, types, pokeId, images) {
     this.name = name;
     this.hp = hp;
     this.attack = attack;
     this.defense = defense;
     this.abilities = abilities;
     this.abilities2 = abilities2;
-    this.id = id;
+    this.types = types;
+    this.pokeId = pokeId;
+    this.images = images
   }
 }
 
@@ -20,6 +22,18 @@ function getPokemon(pokemonName) {
       if (this.readyState == 4 && this.status == 200) {
       pokeinfo = JSON.parse(this.responseText);
       console.log(pokeinfo);
+      var pokeId = pokeinfo["id"]; // this is the id*.. so it should be id
+      pokeId = parseInt(pokeId);
+        if (pokeId > 9 && pokeId < 100) {
+          pokeId = pokeId.toString();
+          pokeId = '0' + pokeId;
+        }
+        else if (pokeId < 10) {
+          pokeId = pokeId.toString();
+          pokeId = '00' + pokeId;
+        }
+      var images = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokeId + ".png";
+      console.log(images);
    let poke = new NuggetsPokemon(
         pokeinfo.name,
         pokeinfo.stats[5]["base_stat"],
@@ -27,8 +41,11 @@ function getPokemon(pokemonName) {
         pokeinfo.stats[3],
         pokeinfo.abilities[0]["ability"]["name"],
         pokeinfo.abilities[1]["ability"]["name"],
-        pokeinfo.id
+        pokeinfo.types[0]["type"]["name"],
+        pokeinfo.pokeId,
+        images
       );
+      console.log(poke);
     let node = document.createElement('p');
       node.innerHTML = "<b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
                         "<b>Attack:</b> " + pokeinfo.stats[4]["base_stat"] + "<br>" +
@@ -38,11 +55,17 @@ function getPokemon(pokemonName) {
     let pageTitle = document.createElement('h2');
       pageTitle.innerHTML = "#" + pokeinfo.id + " - " + pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
       document.getElementById('pokemon-name').appendChild(pageTitle);
+    // let pageType = document.createElement('p');
+    //     pageType.innerHTML = "<b>Type: </b>" + pokeinfo.types[0]["type"]["name"];
+    //     pageType.style.background = "rgba(250, 71, 157,.7)";        }
+    //     pageType.style.borderRadius = "25px";
+    //     document.getElementById('pokemon-type').appendChild(pageType);
+    let pagePic = document.createElement('img');
+          pagePic.src = poke.images;
+          console.log(poke.images);
+          document.getElementById('pokemonPic').appendChild(pagePic);
     }
   };
-  xhttp.open("GET", "https://fizal.me/pokeapi/api/v2/name/" + pokemonName + ".json", true);
+  xhttp.open("GET", "https://fizal.me/pokeapi/api/v2/id/" + pokemonName + ".json", true);
   xhttp.send();
 }
-
-
-// https://pokeapi.co/api/v2/pokemon-species/blaziken
