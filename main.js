@@ -16,13 +16,19 @@ class NuggetsPokemon {
   }
 }
 
+class PokemonData {
+  constructor(infos) {
+    this.infos = infos
+  }
+}
+
 function getPokemon(pokemonName) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
       pokeinfo = JSON.parse(this.responseText);
       console.log(pokeinfo);
-      var pokeId = pokeinfo["id"]; // this is the id*.. so it should be id
+      var pokeId = pokeinfo["id"];
       pokeId = parseInt(pokeId);
         if (pokeId > 9 && pokeId < 100) {
           pokeId = pokeId.toString();
@@ -33,7 +39,7 @@ function getPokemon(pokemonName) {
           pokeId = '00' + pokeId;
         }
       var images = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokeId + ".png";
-      console.log(images);
+      // console.log(images);
    let poke = new NuggetsPokemon(
         pokeinfo.name,
         pokeinfo.stats[5]["base_stat"],
@@ -45,19 +51,22 @@ function getPokemon(pokemonName) {
         pokeinfo.pokeId,
         images
       );
-      console.log(poke);
+      // console.log(poke);
     let node = document.createElement('p');
-      node.innerHTML = "<b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
+      node.innerHTML = "<b><center>Stats: </center></b><b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
                         "<b>Attack:</b> " + pokeinfo.stats[4]["base_stat"] + "<br>" +
                         "<b>Defense:</b> " + pokeinfo.stats[3]["base_stat"] + "<br>" +
                         "<b>Ability:</b> " +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + ", " +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
       document.getElementById('pokeinfo').appendChild(node);
+      node.style.background = "rgb(217, 217, 217, .4)";
+      node.style.borderRadius = "25px";
+      node.style.padding = "20px";
     let pageTitle = document.createElement('h2');
       pageTitle.innerHTML = "#" + pokeinfo.id + " - " + pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
       document.getElementById('pokemon-name').appendChild(pageTitle);
     // let pageType = document.createElement('p');
     //     pageType.innerHTML = "<b>Type: </b>" + pokeinfo.types[0]["type"]["name"];
-    //     pageType.style.background = "rgba(250, 71, 157,.7)";        }
+        // pageType.style.background = "rgba(250, 71,157,.7)";        }
     //     pageType.style.borderRadius = "25px";
     //     document.getElementById('pokemon-type').appendChild(pageType);
     let pagePic = document.createElement('img');
@@ -67,5 +76,32 @@ function getPokemon(pokemonName) {
     }
   };
   xhttp.open("GET", "https://fizal.me/pokeapi/api/v2/id/" + pokemonName + ".json", true);
+  xhttp.send();
+}
+
+function pokemonBio(pokemon) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+      data = JSON.parse(this.responseText);
+      // console.log(data);
+      for (i in data["flavor_text_entries"]) {
+          if (data['flavor_text_entries'][(i)]['language']['name'] == 'en'){
+          var infos = data['flavor_text_entries'][(i)]['flavor_text'];
+        }
+        console.log(infos);
+    let poke = new PokemonData(data.infos);
+    // console.log(poke);
+    }
+      let node = document.createElement('p');
+        node.innerHTML = "<center><b>Bio:</b></center>" + infos;
+          console.log(node);
+        document.getElementById('pokebio').appendChild(node);
+        node.style.background = "rgb(217, 217, 217, .4)";
+        node.style.borderRadius = "25px";
+        node.style.padding = "20px";
+    }
+  };
+  xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon-species/" + pokemon + "/", true);
   xhttp.send();
 }
