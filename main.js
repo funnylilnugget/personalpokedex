@@ -3,16 +3,16 @@ var pokemon2 = "257";
 var pokemon3 = "282";
 
 class NuggetsPokemon {
-  constructor(name, hp, attack, defense, abilities, abilities2, types, pokeId, images) {
+  constructor(name, hp, attack, defense, abilities, types, pokeId, images) {
     this.name = name;
     this.hp = hp;
     this.attack = attack;
     this.defense = defense;
     this.abilities = abilities;
-    this.abilities2 = abilities2;
     this.types = types;
     this.pokeId = pokeId;
-    this.images = images
+    this.images = images;
+    poketrainer.pokemon.push(this);
   }
 }
 
@@ -27,7 +27,6 @@ function getPokemon(pokemonName) {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
       pokeinfo = JSON.parse(this.responseText);
-      console.log(pokeinfo);
       var pokeId = pokeinfo["id"];
       pokeId = parseInt(pokeId);
         if (pokeId > 9 && pokeId < 100) {
@@ -44,8 +43,7 @@ function getPokemon(pokemonName) {
         pokeinfo.stats[5]["base_stat"],
         pokeinfo.stats[4],
         pokeinfo.stats[3],
-        pokeinfo.abilities[0]["ability"]["name"],
-        pokeinfo.abilities[1]["ability"]["name"],
+        pokeinfo.abilities,
         pokeinfo.types[0]["type"]["name"],
         pokeinfo.pokeId,
         images
@@ -63,7 +61,6 @@ function getPokemon(pokemonName) {
       document.getElementById('pokemon-name').appendChild(pageTitle);
     let pagePic = document.createElement('img');
           pagePic.src = poke.images;
-          console.log(poke.images);
           document.getElementById('pokemonPic').appendChild(pagePic);
     let pokemonAbility = document.createElement('p');
         pokemonAbility.innerHTML = "<b>Abilities:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + "<br>" +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
@@ -83,18 +80,14 @@ function pokemonBio(pokemon) {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
       data = JSON.parse(this.responseText);
-      // console.log(data);
       for (i in data["flavor_text_entries"]) {
           if (data['flavor_text_entries'][(i)]['language']['name'] == 'en'){
           var infos = data['flavor_text_entries'][(i)]['flavor_text'];
         }
-        console.log(infos);
     let poke = new PokemonData(data.infos);
-    // console.log(poke);
     }
       let node = document.createElement('p');
         node.innerHTML = "<center><b>Bio:</b></center>" + infos;
-          console.log(node);
         document.getElementById('pokebio').appendChild(node);
         node.style.background = "rgb(217, 217, 217, .4)";
         node.style.borderRadius = "25px";
@@ -107,11 +100,13 @@ function pokemonBio(pokemon) {
 
 // For the scope of the Trainer all/get stuff
 
+
+
 class Trainer {
   constructor(name) {
     this.name = name;
     this.pokemon = [];
-    this.info = [];
+    // this.info = [];
   }
 
   all() {
@@ -129,3 +124,5 @@ class Trainer {
   }
 
 }
+
+var poketrainer = new Trainer("NuggetsPokemon", pokemon1, pokemon2, pokemon3);
