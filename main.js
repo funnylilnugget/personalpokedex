@@ -39,7 +39,6 @@ function getPokemon(pokemonName) {
           pokeId = '00' + pokeId;
         }
       var images = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokeId + ".png";
-      // console.log(images);
    let poke = new NuggetsPokemon(
         pokeinfo.name,
         pokeinfo.stats[5]["base_stat"],
@@ -51,7 +50,6 @@ function getPokemon(pokemonName) {
         pokeinfo.pokeId,
         images
       );
-      // console.log(poke);
     let node = document.createElement('p');
       node.innerHTML = "<b><center>Stats: </center></b><b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
                         "<b>Attack:</b> " + pokeinfo.stats[4]["base_stat"] + "<br>" +
@@ -64,11 +62,7 @@ function getPokemon(pokemonName) {
     let pageTitle = document.createElement('h2');
       pageTitle.innerHTML = "#" + pokeinfo.id + " - " + pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
       document.getElementById('pokemon-name').appendChild(pageTitle);
-    // let pageType = document.createElement('p');
-    //     pageType.innerHTML = "<b>Type: </b>" + pokeinfo.types[0]["type"]["name"];
-        // pageType.style.background = "rgba(250, 71,157,.7)";        }
-    //     pageType.style.borderRadius = "25px";
-    //     document.getElementById('pokemon-type').appendChild(pageType);
+
     let pagePic = document.createElement('img');
           pagePic.src = poke.images;
           console.log(poke.images);
@@ -104,4 +98,29 @@ function pokemonBio(pokemon) {
   };
   xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon-species/" + pokemon + "/", true);
   xhttp.send();
+}
+
+// For the scope of the Trainer all/get stuff
+
+class Trainer {
+  constructor(name) {
+    this.name = name;
+    this.pokemon = [];
+    this.info = [];
+  }
+
+  all() {
+    console.log(this.pokemon);
+  }
+
+  get(name) {
+    var i = 0;
+    for(i in this.pokemon.length)
+    if(name == this.pokemon[i].name) {
+      i++;
+      console.log(this.pokemon[i]);
+      break;
+    }
+  }
+
 }
