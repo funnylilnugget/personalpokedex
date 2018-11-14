@@ -49,32 +49,25 @@ function getPokemon(pokemonName) {
         images
       );
     let node = document.createElement('p');
-      node.innerHTML = "<b><center>Stats:</center></b><b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
+        node.innerHTML = "<b><center>Stats:</center></b><b>HP:</b> " + pokeinfo.stats[5]["base_stat"] + "<br>" +
                         "<b>Attack:</b> " + pokeinfo.stats[4]["base_stat"] + "<br>" +
                         "<b>Defense:</b> " + pokeinfo.stats[3]["base_stat"];
-      document.getElementById('pokeinfo').appendChild(node);
-      node.style.background = "rgb(217, 217, 217, .4)";
-      node.style.borderRadius = "25px";
-      node.style.padding = "20px";
+        document.getElementById('pokeinfo').appendChild(node);
+        node.style.background = "rgb(217, 217, 217, .4)";
+        node.style.borderRadius = "25px";
+        node.style.padding = "20px";
     let pageTitle = document.createElement('h2');
-      pageTitle.innerHTML = "#" + pokeinfo.id + " - " + pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
-      document.getElementById('pokemon-name').appendChild(pageTitle);
+        pageTitle.innerHTML = "#" + pokeinfo.id + " - " + pokeinfo.name.charAt(0).toUpperCase() + pokeinfo.name.slice(1);
+        document.getElementById('pokemon-name').appendChild(pageTitle);
     let pagePic = document.createElement('img');
           pagePic.src = poke.images;
           document.getElementById('pokemonPic').appendChild(pagePic);
-          let pokemonAbility = document.createElement('p');
-              pokemonAbility.innerHTML = "<b>Ability:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1);
-                  document.getElementById('pokeability').appendChild(pokemonAbility);
-                  pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
-                  pokemonAbility.style.borderRadius = "25px";
-                  pokemonAbility.style.padding = "20px";
-    // let pokemonAbility = document.createElement('p');
-    //     pokemonAbility.innerHTML = "<b>Abilities:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + "<br>" +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
-    //         document.getElementById('pokeability').appendChild(pokemonAbility);
-    //         pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
-    //         pokemonAbility.style.borderRadius = "25px";
-    //         pokemonAbility.style.padding = "20px";
-
+    let pokemonAbility = document.createElement('p');
+        pokemonAbility.innerHTML = "<b>Ability:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1);
+        document.getElementById('pokeability').appendChild(pokemonAbility);
+        pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
+        pokemonAbility.style.borderRadius = "25px";
+        pokemonAbility.style.padding = "20px";
     }
   };
   xhttp.open("GET", "https://fizal.me/pokeapi/api/v2/id/" + pokemonName + ".json", true);
@@ -112,7 +105,6 @@ class Trainer {
   constructor(name) {
     this.name = name;
     this.pokemon = [];
-    // this.info = [];
   }
 
   all() {

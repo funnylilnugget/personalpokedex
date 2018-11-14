@@ -29,10 +29,6 @@ p {
   width: 75px;
   display: inline; }
 
-.textbox {
-  background: rgba(209, 203, 203, 0.5);
-  border-radius: 25px; }
-
 .slideRight {
   animation-name: slideRight;
   -webkit-animation-name: slideRight;
