@@ -1,4 +1,4 @@
-var pokemon1 = "777";
+var pokemon1 = "381";
 var pokemon2 = "257";
 var pokemon3 = "282";
 
@@ -62,12 +62,18 @@ function getPokemon(pokemonName) {
     let pagePic = document.createElement('img');
           pagePic.src = poke.images;
           document.getElementById('pokemonPic').appendChild(pagePic);
-    let pokemonAbility = document.createElement('p');
-        pokemonAbility.innerHTML = "<b>Abilities:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + "<br>" +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
-            document.getElementById('pokeability').appendChild(pokemonAbility);
-            pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
-            pokemonAbility.style.borderRadius = "25px";
-            pokemonAbility.style.padding = "20px";
+          let pokemonAbility = document.createElement('p');
+              pokemonAbility.innerHTML = "<b>Ability:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1);
+                  document.getElementById('pokeability').appendChild(pokemonAbility);
+                  pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
+                  pokemonAbility.style.borderRadius = "25px";
+                  pokemonAbility.style.padding = "20px";
+    // let pokemonAbility = document.createElement('p');
+    //     pokemonAbility.innerHTML = "<b>Abilities:</b><br>" +  pokeinfo.abilities[0]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[0]["ability"]["name"].slice(1) + "<br>" +  pokeinfo.abilities[1]["ability"]["name"].charAt(0).toUpperCase() + pokeinfo.abilities[1]["ability"]["name"].slice(1);
+    //         document.getElementById('pokeability').appendChild(pokemonAbility);
+    //         pokemonAbility.style.background = "rgb(217, 217, 217, .4)";
+    //         pokemonAbility.style.borderRadius = "25px";
+    //         pokemonAbility.style.padding = "20px";
 
     }
   };
